@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Group Project App</string>
+    <string name="contDesc1">button to the living room activity</string>
+    <string name="contDesc2">button to the kitchen activity</string>
+    <string name="contDesc3">button to the house activity</string>
+    <string name="contDesc4">button to automobile activity</string>
+    <string name="contDesc5">button to information</string>
+    <string name="welcomeText">Welcome to the smart home app! Please click on an icon.</string>
+</resources>
