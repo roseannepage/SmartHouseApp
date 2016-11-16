@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Group Project App</string>
     <string name="contDesc1">button to the living room activity</string>
@@ -6,4 +7,9 @@
     <string name="contDesc4">button to automobile activity</string>
     <string name="contDesc5">button to information</string>
     <string name="welcomeText">Welcome to the smart home app! Please click on an icon.</string>
+    <string name="contDescLR1">button to the welcome page</string>
+    <string name="contDescLR2">button to add item to list</string>
+    <string name="contDescLR3">button to remove item from list</string>
+    <string name="contDescLR4">button for information</string>
+
 </resources>
