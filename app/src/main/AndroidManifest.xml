@@ -18,7 +18,7 @@
         <activity android:name=".LivingRoomActivity" />
         <activity android:name=".KitchenActivity" />
         <activity android:name=".HouseActivity" />
-        <activity android:name=".AutomobileActivity"></activity>
+        <activity android:name=".AutomobileActivity" />
     </application>
 
 </manifest>
