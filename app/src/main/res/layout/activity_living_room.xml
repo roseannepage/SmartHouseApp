@@ -13,6 +13,14 @@
     android:orientation="vertical"
     android:weightSum="1">
 
+    <TextView
+        android:text="Living Room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:gravity="center" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,6 +30,13 @@
             android:layout_height="wrap_content"
             layout="@layout/lr_itemlist" />
     </FrameLayout>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="13dp"
+        android:id="@+id/progressBar"
+        android:visibility="invisible" />
 
 
 </LinearLayout>

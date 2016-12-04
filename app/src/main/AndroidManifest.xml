@@ -19,6 +19,7 @@
         <activity android:name=".KitchenActivity" />
         <activity android:name=".HouseActivity" />
         <activity android:name=".AutomobileActivity" />
+        <activity android:name=".lr_tv_activity"></activity>
     </application>
 
 </manifest>

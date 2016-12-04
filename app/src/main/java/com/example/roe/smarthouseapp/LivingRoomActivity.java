@@ -15,18 +15,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static com.example.roe.smarthouseapp.R.id.listviewlr;
+import static com.example.roe.smarthouseapp.R.id.message_text;
 
 public class LivingRoomActivity extends AppCompatActivity {
 
     protected static final String ACTIVITY_NAME = "LivingRoomActivity";
     LivingRoomInfoDialogFragment infoDialog;
-    ImageButton compasBtn, plusBtn, minusBtn, infoBtn;
+    ImageButton plusBtn, minusBtn, infoBtn;
     ListView lrList;
+    ArrayList<String> array = new ArrayList<String>();
+    protected SQLiteDatabase db;
+    ListAdapter messageAdapter;
+    Cursor results1;
+
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -40,14 +51,87 @@ public class LivingRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_living_room);
 
-        compasBtn = (ImageButton) findViewById(R.id.lrCompasBtn);
         plusBtn = (ImageButton) findViewById(R.id.lrPlusBtn);
         minusBtn = (ImageButton) findViewById(R.id.lrMinusBtn);
         infoBtn = (ImageButton) findViewById(R.id.lrInfoBtn);
         infoDialog = new LivingRoomInfoDialogFragment();
-        lrList = (ListView)findViewById(R.id.listviewlr) ;
+        lrList = (ListView)findViewById(R.id.listviewlr);
 
 
+
+        messageAdapter = new ListAdapter( this );
+        lrList.setAdapter (messageAdapter);
+        lr_databaseHelper dbHelper = new lr_databaseHelper( this );
+        db = dbHelper.getWritableDatabase();
+        results1 = db.rawQuery("Select * from LIVINGROOM", null);
+        results1.moveToFirst();
+
+
+        while (!results1.isAfterLast()) {
+            array.add(results1.getString( results1.getColumnIndex( "MESSAGE") ));
+            Log.i(ACTIVITY_NAME, "SQL MESSAGE:”" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
+            Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + results1.getColumnCount() );
+
+            for(int i =0; i < results1.getColumnCount(); i++){
+                results1.getColumnName(i);
+            }
+
+            results1.moveToNext(); //move the cursor to the next row
+        }
+
+        if(array.get(5).equalsIgnoreCase("Nothing assigned")){
+            minusBtn.setClickable(false);
+            minusBtn.setAlpha(.5f);
+            plusBtn.setClickable(true);
+            plusBtn.setAlpha(1f);
+        }else {
+            plusBtn.setClickable(false);
+            plusBtn.setAlpha(.5f);
+            minusBtn.setClickable(true);
+            minusBtn.setAlpha(1f);
+        }
+
+        plusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onCreateDialog();
+                Log.i(ACTIVITY_NAME, "User clicked Plus Button");
+            }
+        });
+
+        minusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Nothing assigned' WHERE ID = 6";
+
+                db.execSQL(strSQL);
+
+                minusBtn.setClickable(false);
+                minusBtn.setAlpha(.5f);
+                plusBtn.setClickable(true);
+                plusBtn.setAlpha(1f);
+                array.clear();
+                lrList.clearChoices();
+                results1 = db.rawQuery("Select * from LIVINGROOM", null);
+                results1.moveToFirst();
+
+
+                while (!results1.isAfterLast()) {
+                    array.add(results1.getString( results1.getColumnIndex( "MESSAGE") ));
+                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:”" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
+                    Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + results1.getColumnCount() );
+
+                    for(int i =0; i < results1.getColumnCount(); i++){
+                        results1.getColumnName(i);
+                    }
+
+                    results1.moveToNext(); //move the cursor to the next row
+                }
+                messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
+
+        Log.i(ACTIVITY_NAME, "User clicked Minus Button");
+            }
+        });
 
         infoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,13 +141,63 @@ public class LivingRoomActivity extends AppCompatActivity {
             }
         });
 
-        compasBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
     }
+
+    private class ListAdapter extends ArrayAdapter<String> {
+
+
+        public ListAdapter(Context ctx) {
+
+            super(ctx, 0);
+        }
+
+        public int getCount() {
+            return array.size();
+        }
+
+        public String getItem(int position){
+            return array.get(position);
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent){
+            LayoutInflater inflater = LivingRoomActivity.this.getLayoutInflater();
+            View result = null ;
+
+                result = inflater.inflate(R.layout.lr_list_row, null);
+
+            TextView message = (TextView)result.findViewById(message_text);
+            message.setText(   getItem(position)  ); // get the string at position
+
+            if(message.getText().toString().equalsIgnoreCase("Smart tv")) {
+                result.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Context context = v.getContext();
+
+                        Intent intent = new Intent(context, lr_tv_activity.class);
+                        context.startActivity(intent);
+                    }
+                });
+            }
+            if(message.getText().toString().equalsIgnoreCase("Smart lamp")) {
+                result.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Context context = v.getContext();
+
+                        Intent intent = new Intent(context, MainActivity.class);
+                        context.startActivity(intent);
+                    }
+                });
+            }
+            return result;
+
+        }
+    }
+
 
 
 
@@ -103,7 +237,7 @@ public class LivingRoomActivity extends AppCompatActivity {
 
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
             alertBuilder.setMessage("Living Room Activity created by Roseanne Page. \n\n\n" +
-                    "Clicking on the compas icon brings you back to the welcome page.\n\n" +
+
                     "Clicking on the + icon allows you to add an item to the list.\n\n" +
                     "Clicking on the - icon allows you to remove an item from the list.\n\n" +
                     "Clicking on a listed item brings you to a more detailled view and options for said item.")
@@ -116,6 +250,94 @@ public class LivingRoomActivity extends AppCompatActivity {
 
             return alertBuilder.create();
         }
-    }//end of WelcomeInfoDialogFragment
+    }
+
+    public void onCreateDialog() {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogview = inflater.inflate(R.layout.tv_customdialog, null);
+
+        builder.setView(dialogview);
+
+        final android.app.AlertDialog b = builder.create();
+        Button button1 = (Button)dialogview.findViewById(R.id.button1);
+        Button button2 = (Button)dialogview.findViewById(R.id.button2);
+        Button button3 = (Button)dialogview.findViewById(R.id.button3);
+        Button button4 = (Button)dialogview.findViewById(R.id.button4);
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Smart tv' WHERE ID = 6";
+
+                db.execSQL(strSQL);
+                messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
+                plusBtn.setClickable(false);
+                plusBtn.setAlpha(.5f);
+                minusBtn.setClickable(true);
+                minusBtn.setAlpha(1f);
+                b.dismiss();
+                array.clear();
+                results1 = db.rawQuery("Select * from LIVINGROOM", null);
+                results1.moveToFirst();
+
+
+                while (!results1.isAfterLast()) {
+                    array.add(results1.getString( results1.getColumnIndex( "MESSAGE") ));
+                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:”" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
+                    Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + results1.getColumnCount() );
+
+                    for(int i =0; i < results1.getColumnCount(); i++){
+                        results1.getColumnName(i);
+                    }
+
+                    results1.moveToNext(); //move the cursor to the next row
+                }
+                messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
+
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Smart lamp' WHERE ID = 6";
+
+                db.execSQL(strSQL);
+
+                plusBtn.setClickable(false);
+                plusBtn.setAlpha(.5f);
+                minusBtn.setClickable(true);
+                minusBtn.setAlpha(1f);
+                b.dismiss();
+                array.clear();
+                results1 = db.rawQuery("Select * from LIVINGROOM", null);
+                results1.moveToFirst();
+
+
+                while (!results1.isAfterLast()) {
+                    array.add(results1.getString( results1.getColumnIndex( "MESSAGE") ));
+                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:”" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
+                    Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + results1.getColumnCount() );
+
+                    for(int i =0; i < results1.getColumnCount(); i++){
+                        results1.getColumnName(i);
+                    }
+
+                    results1.moveToNext(); //move the cursor to the next row
+                }
+                messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+
+        b.show();
+    }
 
 }

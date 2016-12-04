@@ -27,5 +27,7 @@
     <string name="channel_down_button">channel down button</string>
     <string name="volume_down_button">volume down button</string>
     <string name="volume_up_button">volume up button</string>
+    <string name="tv_info_button">TV info button</string>
+    <string name="pick_a_new_item_to_add">Pick a new item to add.</string>
 
 </resources>

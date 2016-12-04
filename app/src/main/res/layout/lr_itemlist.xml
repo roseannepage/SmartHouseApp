@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listviewlr"
-        android:layout_above="@+id/lrCompasBtn" />
+        android:layout_above="@+id/lrPlusBtn" />
 
 
     <ImageButton
@@ -63,25 +63,12 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_backtowelcome"
-        android:id="@+id/lrCompasBtn"
-        android:contentDescription="@string/contDescLR1"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentBottom="true"
-         />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_plus"
         android:id="@+id/lrPlusBtn"
         android:contentDescription="@string/contDescLR2"
 
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/lrCompasBtn"
-        android:layout_marginStart="66dp" />
+        android:layout_toEndOf="@+id/lrCompasBtn" />
 
 
 </RelativeLayout>
