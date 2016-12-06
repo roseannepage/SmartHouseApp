@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.roe.smarthouseapp">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -19,10 +21,10 @@
         <activity android:name=".KitchenActivity" />
         <activity android:name=".HouseActivity" />
         <activity android:name=".AutomobileActivity" />
-        <activity android:name=".lr_tv_activity" />
-        <activity android:name=".lr_lamp1_activity" />
-        <activity android:name=".lr_lamp2_activity" />
-        <activity android:name=".lr_fragmentholder"></activity>
+
+        <activity android:name=".lr_fragmentholder" />
+        <activity android:name=".lr_lamp3_activity" />
+        <activity android:name=".lr_blinds_activity"></activity>
     </application>
 
 </manifest>

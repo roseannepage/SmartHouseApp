@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_lr_lamp2_activity"
+    android:id="@+id/activity_lr_lamp3_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.roe.smarthouseapp.lr_lamp2_activity">
+    tools:context="com.example.roe.smarthouseapp.lr_lamp1_activity">
+
 
     <TextView
-        android:text="@string/lamp_dimmer"
+        android:text="@string/lamp_dimmer_with_colour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lamp2Titleid"
+        android:id="@+id/lamp3Titleid"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
@@ -22,11 +23,11 @@
         android:text="@string/lamp_dimmer_controls"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lamp2dimmertext"
+        android:id="@+id/lamp3dimmertext"
 
         android:gravity="center"
         android:layout_marginStart="92dp"
-        android:layout_below="@+id/lamp2Titleid"
+        android:layout_below="@+id/lamp3Titleid"
         android:layout_alignParentStart="false"
         android:layout_marginTop="35dp"
 
@@ -58,7 +59,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         android:id="@+id/seekBar"
-        android:layout_below="@+id/lamp2dimmertext"
+        android:layout_below="@+id/lamp3dimmertext"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/colour_controls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:id="@+id/textView10"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/dropDown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/colour_arrays"
+        android:prompt="@string/pick_a_color"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp" />
+
+
+
 
 </RelativeLayout>

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_lr_tv_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -172,15 +173,15 @@
         android:layout_alignStart="@+id/channeltext" />
 
     <TextView
-        android:text="@string/clicking_on_the_toggle_button_turns_the_tv_on_off_clicking_on_the_tv_channel_number_allows_you_to_change_it_you_must_then_press_the_enter_button_change_the_channel_on_the_tv_clicking_on_the_channel_up_and_down_buttons_allow_you_to_move_through_the_channels_one_channel_at_a_time_no_need_to_press_the_enter_button_for_these_clicking_on_the_volume_and_buttons_allows_you_to_change_the_tv_volume_0_is_mute_and_20_is_max"
+        android:text="@string/tvinfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView9"
         android:gravity="center_horizontal"
-        android:textSize="10sp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="12dp"
-        tools:ignore="SmallSp" />
+        android:textSize="14sp"
+        tools:ignore="SmallSp"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

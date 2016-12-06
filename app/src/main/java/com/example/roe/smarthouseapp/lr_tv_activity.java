@@ -48,23 +48,11 @@ public class lr_tv_activity extends Fragment {
 
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
-            mItem = getArguments().getString(ARG_ITEM_ID);
-
-            Activity activity = this.getActivity();
-
-        }
-    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.activity_lr_tv_activity, container, false);
 
 
@@ -109,6 +97,7 @@ public class lr_tv_activity extends Fragment {
                 duration = Toast.LENGTH_LONG;
                 toast = Toast.makeText(getActivity(), text, duration);
                 toast.show();
+                channel= Integer.parseInt(channelEditText.getText().toString());
 
 
 

@@ -19,13 +19,13 @@ import android.widget.Button;
 
 import android.widget.ImageButton;
 import android.widget.ListView;
-
+import android.app.Fragment;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 
-import static com.example.roe.smarthouseapp.R.id.listviewlr;
+
 import static com.example.roe.smarthouseapp.R.id.message_text;
 
 
@@ -40,12 +40,7 @@ public class LivingRoomActivity extends AppCompatActivity {
     ListAdapter messageAdapter;
     Cursor results1;
     boolean istablet;
-
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
-    private boolean mTwoPane;
+    int list1, list2, list3, list4, list5, list6;
 
 
     @Override
@@ -66,17 +61,36 @@ public class LivingRoomActivity extends AppCompatActivity {
         }
 
 
+
         messageAdapter = new ListAdapter( this );
         lrList.setAdapter (messageAdapter);
         lr_databaseHelper dbHelper = new lr_databaseHelper( this );
         db = dbHelper.getWritableDatabase();
-        results1 = db.rawQuery("Select * from LIVINGROOM", null);
+        results1 = db.rawQuery("Select * from LIVINGROOM order by USED DESC", null);
         results1.moveToFirst();
-
+        list6=0;
 
         while (!results1.isAfterLast()) {
+            if(results1.getInt(results1.getColumnIndex("ID"))==1){
+                list1 = results1.getInt(results1.getColumnIndex("USED"));
+            }
+            if(results1.getInt(results1.getColumnIndex("ID"))==2){
+                list2 = results1.getInt(results1.getColumnIndex("USED"));
+            }
+            if(results1.getInt(results1.getColumnIndex("ID"))==3){
+                list3 = results1.getInt(results1.getColumnIndex("USED"));
+            }
+            if(results1.getInt(results1.getColumnIndex("ID"))==4){
+                list4 = results1.getInt(results1.getColumnIndex("USED"));
+            }
+            if(results1.getInt(results1.getColumnIndex("ID"))==5){
+                list5 = results1.getInt(results1.getColumnIndex("USED"));
+            }
+            if(results1.getInt(results1.getColumnIndex("ID"))==6){
+                list6 = results1.getInt(results1.getColumnIndex("USED"));
+            }
             array.add(results1.getString( results1.getColumnIndex( "MESSAGE") ));
-            Log.i(ACTIVITY_NAME, "SQL MESSAGE:”" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
+            Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
             Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + results1.getColumnCount() );
 
             for(int i =0; i < results1.getColumnCount(); i++){
@@ -173,13 +187,19 @@ public class LivingRoomActivity extends AppCompatActivity {
 
                 result = inflater.inflate(R.layout.lr_list_row, null);
 
-            TextView message = (TextView)result.findViewById(message_text);
+            final TextView message = (TextView)result.findViewById(message_text);
             message.setText(   getItem(position)  ); // get the string at position
 
-            if(message.getText().toString().equalsIgnoreCase("Smart tv")) {
+            if(message.getText().toString().contains("Smart tv")) {
                 result.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        if(message.getText().toString().contains("2")){
+                            list6 ++;
+                        }else{
+                            list1 ++;
+                        }
 
                         Context context = v.getContext();
                         Bundle arguments = new Bundle();
@@ -189,21 +209,28 @@ public class LivingRoomActivity extends AppCompatActivity {
                             lr_tv_activity fragment = new lr_tv_activity();
                             fragment.setArguments(arguments);
                             getFragmentManager().beginTransaction()
-                                    .replace(R.id.fragmentholder, fragment)
+                                    .replace(R.id.lritemlist_detail_container, fragment)
                                     .commit();
                         }else{
 
-                            Intent intent = new Intent(context, lr_tv_activity.class);
+                            Intent intent = new Intent(context, lr_fragmentholder.class);
                             intent.putExtras(arguments);
                             context.startActivity(intent);
                         }
                     }
                 });
             }
-            if(message.getText().toString().equalsIgnoreCase("Smart lamp")) {
+            if(message.getText().toString().contains("Smart lamp")) {
+
                 result.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        if(message.getText().toString().contains("2")){
+                            list6 ++;
+                        }else{
+                            list2 ++;
+                        }
 
                         Context context = v.getContext();
                         Bundle arguments = new Bundle();
@@ -213,11 +240,11 @@ public class LivingRoomActivity extends AppCompatActivity {
                             lr_lamp1_activity fragment = new lr_lamp1_activity();
                             fragment.setArguments(arguments);
                             getFragmentManager().beginTransaction()
-                                    .replace(R.id.fragmentholder, fragment)
+                                    .replace(R.id.lritemlist_detail_container, fragment)
                                     .commit();
                         }else{
 
-                            Intent intent = new Intent(context, lr_lamp1_activity.class);
+                            Intent intent = new Intent(context, lr_fragmentholder.class);
                             intent.putExtras(arguments);
                             context.startActivity(intent);
                         }
@@ -225,10 +252,16 @@ public class LivingRoomActivity extends AppCompatActivity {
                 });
             }
 
-            if(message.getText().toString().equalsIgnoreCase("Smart lamp dimmer")) {
+            if(message.getText().toString().contains("Smart lamp dimmer")) {
                 result.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        if(message.getText().toString().contains("2")){
+                            list6 ++;
+                        }else{
+                            list3 ++;
+                        }
 
                         Context context = v.getContext();
                         Bundle arguments = new Bundle();
@@ -238,17 +271,79 @@ public class LivingRoomActivity extends AppCompatActivity {
                             lr_lamp2_activity fragment = new lr_lamp2_activity();
                             fragment.setArguments(arguments);
                             getFragmentManager().beginTransaction()
-                                    .replace(R.id.fragmentholder, fragment)
+                                    .replace(R.id.lritemlist_detail_container, fragment)
                                     .commit();
                         }else{
 
-                            Intent intent = new Intent(context, lr_lamp2_activity.class);
+                            Intent intent = new Intent(context, lr_fragmentholder.class);
                             intent.putExtras(arguments);
                             context.startActivity(intent);
                         }
                     }
                 });
             }
+
+            if(message.getText().toString().contains("Smart lamp color dimmer")) {
+                result.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(message.getText().toString().contains("2")){
+                            list6 ++;
+                        }else{
+                            list4 ++;
+                        }
+
+                        Context context = v.getContext();
+                        Bundle arguments = new Bundle();
+                        arguments.putString("Origin", "Lamp3");
+                        if(istablet){
+
+                            lr_lamp3_activity fragment = new lr_lamp3_activity();
+                            fragment.setArguments(arguments);
+                            getFragmentManager().beginTransaction()
+                                    .replace(R.id.lritemlist_detail_container, fragment)
+                                    .commit();
+                        }else{
+
+                            Intent intent = new Intent(context, lr_fragmentholder.class);
+                            intent.putExtras(arguments);
+                            context.startActivity(intent);
+                        }
+                    }
+                });
+            }
+
+            if(message.getText().toString().contains("Smart window")) {
+                result.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                            list5 ++;
+
+
+                        Context context = v.getContext();
+                        Bundle arguments = new Bundle();
+                        arguments.putString("Origin", "window");
+                         if(istablet){
+
+                         lr_blinds_activity fragment = new lr_blinds_activity();
+                         fragment.setArguments(arguments);
+                         getFragmentManager().beginTransaction()
+                         .replace(R.id.lritemlist_detail_container, fragment)
+                         .commit();
+                         }else{
+
+                        Intent intent = new Intent(context, lr_fragmentholder.class);
+                        intent.putExtras(arguments);
+                        context.startActivity(intent);
+                        }
+                    }
+                });
+            }
+
+
             return result;
 
         }
@@ -283,6 +378,26 @@ public class LivingRoomActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+
+
+        String strSQL = "UPDATE LIVINGROOM SET USED = " + list1 + " WHERE ID = 1";
+        db.execSQL(strSQL);
+        strSQL = "UPDATE LIVINGROOM SET USED = " + list2 + " WHERE ID = 2";
+        db.execSQL(strSQL);
+        strSQL = "UPDATE LIVINGROOM SET USED = " + list3 + " WHERE ID = 3";
+        db.execSQL(strSQL);
+        strSQL = "UPDATE LIVINGROOM SET USED = " + list4 + " WHERE ID = 4";
+        db.execSQL(strSQL);
+        strSQL = "UPDATE LIVINGROOM SET USED = " + list5 + " WHERE ID = 5";
+        db.execSQL(strSQL);
+
+        if(array.size()==6){
+            strSQL = "UPDATE LIVINGROOM SET USED = " + list6 + " WHERE ID = 6";
+            db.execSQL(strSQL);
+        }
+
+
+
         super.onDestroy();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
     }
@@ -325,7 +440,7 @@ public class LivingRoomActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart tv', 0);" ;
+                String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart tv 2', 0);" ;
 
                 db.execSQL(strSQL);
                 messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
@@ -341,7 +456,7 @@ public class LivingRoomActivity extends AppCompatActivity {
 
                 while (!results1.isAfterLast()) {
                     array.add(results1.getString( results1.getColumnIndex( "MESSAGE") ));
-                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:”" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
+                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
                     Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + results1.getColumnCount() );
 
                     for(int i =0; i < results1.getColumnCount(); i++){
@@ -359,7 +474,7 @@ public class LivingRoomActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Smart lamp' WHERE ID = 6";
-                String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart lamp', 0);" ;
+                String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart lamp 2', 0);" ;
 
                 db.execSQL(strSQL);
 
@@ -375,7 +490,7 @@ public class LivingRoomActivity extends AppCompatActivity {
 
                 while (!results1.isAfterLast()) {
                     array.add(results1.getString( results1.getColumnIndex( "MESSAGE") ));
-                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:”" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
+                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
                     Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + results1.getColumnCount() );
 
                     for(int i =0; i < results1.getColumnCount(); i++){
@@ -392,7 +507,7 @@ public class LivingRoomActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Smart lamp' WHERE ID = 6";
-                String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart lamp dimmer', 0);" ;
+                String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart lamp dimmer 2', 0);" ;
 
                 db.execSQL(strSQL);
 
@@ -408,7 +523,46 @@ public class LivingRoomActivity extends AppCompatActivity {
 
                 while (!results1.isAfterLast()) {
                     array.add(results1.getString( results1.getColumnIndex( "MESSAGE") ));
-                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:”" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
+                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
+                    Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + results1.getColumnCount() );
+
+                    for(int i =0; i < results1.getColumnCount(); i++){
+                        results1.getColumnName(i);
+                    }
+
+                    results1.moveToNext(); //move the cursor to the next row
+                }
+                messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Smart lamp' WHERE ID = 6";
+                String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart lamp color dimmer 2', 0);" ;
+
+                db.execSQL(strSQL);
+
+                plusBtn.setClickable(false);
+                plusBtn.setAlpha(.5f);
+                minusBtn.setClickable(true);
+                minusBtn.setAlpha(1f);
+                b.dismiss();
+                array.clear();
+                results1 = db.rawQuery("Select * from LIVINGROOM", null);
+                results1.moveToFirst();
+
+
+                while (!results1.isAfterLast()) {
+                    array.add(results1.getString( results1.getColumnIndex( "MESSAGE") ));
+                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
                     Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + results1.getColumnCount() );
 
                     for(int i =0; i < results1.getColumnCount(); i++){

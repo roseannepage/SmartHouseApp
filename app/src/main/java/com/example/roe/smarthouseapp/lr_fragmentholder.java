@@ -55,7 +55,24 @@ public class lr_fragmentholder extends AppCompatActivity {
                         .add(R.id.fragmentholder, fragment)
                         .commit();
             }
-
+            if(origin.equalsIgnoreCase("lamp3")){
+                arguments.putString(lr_lamp3_activity.ARG_ITEM_ID,
+                        getIntent().getStringExtra(lr_lamp3_activity.ARG_ITEM_ID));
+                Fragment fragment = new lr_lamp3_activity();
+                fragment.setArguments(arguments);//check origin
+                getFragmentManager().beginTransaction()
+                        .add(R.id.fragmentholder, fragment)
+                        .commit();
+            }
+            if(origin.equalsIgnoreCase("window")){
+                arguments.putString(lr_blinds_activity.ARG_ITEM_ID,
+                        getIntent().getStringExtra(lr_blinds_activity.ARG_ITEM_ID));
+                Fragment fragment = new lr_blinds_activity();
+                fragment.setArguments(arguments);//check origin
+                getFragmentManager().beginTransaction()
+                        .add(R.id.fragmentholder, fragment)
+                        .commit();
+            }
 
 
         }
