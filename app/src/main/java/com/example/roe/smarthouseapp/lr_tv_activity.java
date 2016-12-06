@@ -1,15 +1,16 @@
 package com.example.roe.smarthouseapp;
 
 
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.os.Bundle;
 
+import android.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.support.design.widget.Snackbar;
 
-public class lr_tv_activity extends AppCompatActivity {
+public class lr_tv_activity extends Fragment {
 
     protected static final String ACTIVITY_NAME = "LivingRoom _TV_Activity";
     ToggleButton tvOnOffTggl;
@@ -26,25 +27,58 @@ public class lr_tv_activity extends AppCompatActivity {
     ImageView enterBtn;
     int volume;
     int channel;
-    TVInfoDialogFragment infoDialog;
 
+
+    /**
+     * The fragment argument representing the item ID that this fragment
+     * represents.
+     */
+    public static final String ARG_ITEM_ID = "item_id";
+
+    /**
+     * The dummy content this fragment is presenting.
+     */
+    private String mItem;
+
+    /**
+     * Mandatory empty constructor for the fragment manager to instantiate the
+     * fragment (e.g. upon screen orientation changes).
+     */
+    public static void lr_tv_activity() {
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lr_tv_activity);
 
-        tvOnOffTggl = (ToggleButton) findViewById(R.id.toggleButton);
-        channelEditText = (EditText) findViewById(R.id.channeledittext);
-        enterBtn = (ImageView) findViewById(R.id.imageView);
-        channelUpBtn = (ImageButton) findViewById(R.id.imageButton2);
-        channelDwnBtn = (ImageButton) findViewById(R.id.imageButton3);
-        volumeUpBtn = (ImageButton) findViewById(R.id.imageButton5);
-        volDwnBtn = (ImageButton) findViewById(R.id.imageButton4);
+        if (getArguments().containsKey(ARG_ITEM_ID)) {
+            // Load the dummy content specified by the fragment
+            // arguments. In a real-world scenario, use a Loader
+            // to load content from a content provider.
+            mItem = getArguments().getString(ARG_ITEM_ID);
+
+            Activity activity = this.getActivity();
+
+        }
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.activity_lr_tv_activity, container, false);
+
+
+        tvOnOffTggl = (ToggleButton) rootView.findViewById(R.id.toggleButton);
+        channelEditText = (EditText) rootView.findViewById(R.id.channeledittext);
+        enterBtn = (ImageView) rootView.findViewById(R.id.imageView);
+        channelUpBtn = (ImageButton) rootView.findViewById(R.id.imageButton2);
+        channelDwnBtn = (ImageButton) rootView.findViewById(R.id.imageButton3);
+        volumeUpBtn = (ImageButton) rootView.findViewById(R.id.imageButton5);
+        volDwnBtn = (ImageButton) rootView.findViewById(R.id.imageButton4);
         volume = 10;
         channel = 00;
-        infoBtn = (ImageButton) findViewById(R.id.TVInfoBtn);
-        infoDialog = new TVInfoDialogFragment();
+
+
 
         tvOnOffTggl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +89,7 @@ public class lr_tv_activity extends AppCompatActivity {
 
                 text = "Tv is now " + tvOnOffTggl.getText();
                 duration = Toast.LENGTH_SHORT;
-                toast = Toast.makeText(getApplicationContext(), text, duration);
+                toast = Toast.makeText(getActivity(), text, duration);
                 toast.show();
 
 
@@ -73,7 +107,7 @@ public class lr_tv_activity extends AppCompatActivity {
 
                 text = "Tv channel changed to " + channelEditText.getText();
                 duration = Toast.LENGTH_LONG;
-                toast = Toast.makeText(getApplicationContext(), text, duration);
+                toast = Toast.makeText(getActivity(), text, duration);
                 toast.show();
 
 
@@ -89,7 +123,7 @@ public class lr_tv_activity extends AppCompatActivity {
                 if(volume< 20){
                     volume ++;
                     Snackbar snackbar = Snackbar
-                    .make(findViewById(android.R.id.content), "Volume at level " + volume, Snackbar.LENGTH_LONG);
+                    .make(getActivity().findViewById(android.R.id.content), "Volume at level " + volume, Snackbar.LENGTH_LONG);
 
                     snackbar.show();
 
@@ -98,7 +132,7 @@ public class lr_tv_activity extends AppCompatActivity {
                 if(volume==20){
 
                     Snackbar snackbar = Snackbar
-                            .make(findViewById(android.R.id.content), "Volume at max level 20", Snackbar.LENGTH_LONG);
+                            .make(getActivity().findViewById(android.R.id.content), "Volume at max level 20", Snackbar.LENGTH_LONG);
 
                     snackbar.show();
 
@@ -113,7 +147,7 @@ public class lr_tv_activity extends AppCompatActivity {
                 if(volume > 0){
                     volume --;
                     Snackbar snackbar = Snackbar
-                            .make(findViewById(android.R.id.content), "Volume at level " + volume, Snackbar.LENGTH_LONG);
+                            .make(getActivity().findViewById(android.R.id.content), "Volume at level " + volume, Snackbar.LENGTH_LONG);
 
                     snackbar.show();
 
@@ -122,7 +156,7 @@ public class lr_tv_activity extends AppCompatActivity {
                 if(volume==0){
 
                     Snackbar snackbar = Snackbar
-                            .make(findViewById(android.R.id.content), "Volume muted", Snackbar.LENGTH_LONG);
+                            .make(getActivity().findViewById(android.R.id.content), "Volume muted", Snackbar.LENGTH_LONG);
 
                     snackbar.show();
 
@@ -162,64 +196,41 @@ public class lr_tv_activity extends AppCompatActivity {
             }
         });
 
-        infoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                infoDialog.show(getFragmentManager(),  "");
-                Log.i(ACTIVITY_NAME, "User clicked Info Icon");
-            }
-        });
+
+        return rootView;
     }
 
 
+
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         Log.i(ACTIVITY_NAME, "In onResume()");
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
         Log.i(ACTIVITY_NAME, "In onStart()");
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         Log.i(ACTIVITY_NAME, "In onPause()");
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         Log.i(ACTIVITY_NAME, "In onStop()");
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
     }
 
-    public static class TVInfoDialogFragment extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-            alertBuilder.setMessage("TV Activity created by Roseanne Page. \n\n\n" +
-                    "Clicking on the Toggle button turns the TV on/off.\n\n" +
-                    "Clicking on the TV channel number allows you to change it. You must then press the enter button change the channel on the TV.\n\n" +
-                    "Clicking on the Channel up and down buttons allow you to move through the channels one channel at a time. No need to press the enter button for these.\n\n" +
-                    "Clicking on the volume + and - buttons allows you to change the TV volume. 0 is mute and 20 is max.")
-
-                    .setNeutralButton("close dialog", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dismiss();
-                        }
-                    });
-
-            return alertBuilder.create();
-        }
-    }
 }

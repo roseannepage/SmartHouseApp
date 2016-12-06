@@ -19,7 +19,10 @@
         <activity android:name=".KitchenActivity" />
         <activity android:name=".HouseActivity" />
         <activity android:name=".AutomobileActivity" />
-        <activity android:name=".lr_tv_activity"></activity>
+        <activity android:name=".lr_tv_activity" />
+        <activity android:name=".lr_lamp1_activity" />
+        <activity android:name=".lr_lamp2_activity" />
+        <activity android:name=".lr_fragmentholder"></activity>
     </application>
 
 </manifest>

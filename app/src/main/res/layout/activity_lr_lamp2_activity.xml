@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_lr_lamp2_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.roe.smarthouseapp.lr_lamp2_activity">
+
+    <TextView
+        android:text="@string/lamp_dimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lamp2Titleid"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+    <TextView
+        android:text="@string/lamp_dimmer_controls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lamp1toggletext"
+
+        android:gravity="center"
+        android:layout_marginStart="92dp"
+        android:layout_below="@+id/lamp2Titleid"
+        android:layout_alignParentStart="false"
+        android:layout_marginTop="35dp"
+
+        android:layout_centerHorizontal="true"
+
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:text="@string/off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp"
+        android:id="@+id/textView3" />
+
+    <TextView
+        android:text="@string/full_brightness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignParentEnd="true" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:id="@+id/seekBar"
+        android:layout_below="@+id/lamp1toggletext"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

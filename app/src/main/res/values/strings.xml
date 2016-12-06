@@ -29,5 +29,12 @@
     <string name="volume_up_button">volume up button</string>
     <string name="tv_info_button">TV info button</string>
     <string name="pick_a_new_item_to_add">Pick a new item to add.</string>
+    <string name="lamp">Lamp</string>
+    <string name="turn_lamp_on_off">Turn lamp On/Off</string>
+    <string name="full_brightness">Full brightness</string>
+    <string name="lamp_dimmer_controls">Lamp dimmer controls</string>
+    <string name="off">Off</string>
+    <string name="lamp_dimmer">Lamp dimmer</string>
+    <string name="clicking_on_the_toggle_button_turns_the_tv_on_off_clicking_on_the_tv_channel_number_allows_you_to_change_it_you_must_then_press_the_enter_button_change_the_channel_on_the_tv_clicking_on_the_channel_up_and_down_buttons_allow_you_to_move_through_the_channels_one_channel_at_a_time_no_need_to_press_the_enter_button_for_these_clicking_on_the_volume_and_buttons_allows_you_to_change_the_tv_volume_0_is_mute_and_20_is_max">Clicking on the Toggle button turns the TV on/off. Clicking on the TV channel number allows you to change it. You must then press the enter button change the channel on the TV. Clicking on the Channel up and down buttons allow you to move through the channels one channel at a time. No need to press the enter button for these. Clicking on the volume + and - buttons allows you to change the TV volume. 0 is mute and 20 is max.</string>
 
 </resources>

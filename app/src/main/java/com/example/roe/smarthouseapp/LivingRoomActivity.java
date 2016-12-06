@@ -16,16 +16,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.ProgressBar;
+
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
 import static com.example.roe.smarthouseapp.R.id.listviewlr;
 import static com.example.roe.smarthouseapp.R.id.message_text;
+
 
 public class LivingRoomActivity extends AppCompatActivity {
 
@@ -37,7 +39,7 @@ public class LivingRoomActivity extends AppCompatActivity {
     protected SQLiteDatabase db;
     ListAdapter messageAdapter;
     Cursor results1;
-
+    boolean istablet;
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -57,6 +59,11 @@ public class LivingRoomActivity extends AppCompatActivity {
         infoDialog = new LivingRoomInfoDialogFragment();
         lrList = (ListView)findViewById(R.id.listviewlr);
 
+        if(findViewById(R.id.frameid) != null){
+            istablet = true;
+        }else{
+            istablet = false;
+        }
 
 
         messageAdapter = new ListAdapter( this );
@@ -79,7 +86,7 @@ public class LivingRoomActivity extends AppCompatActivity {
             results1.moveToNext(); //move the cursor to the next row
         }
 
-        if(array.get(5).equalsIgnoreCase("Nothing assigned")){
+        if(array.size()<=5){
             minusBtn.setClickable(false);
             minusBtn.setAlpha(.5f);
             plusBtn.setClickable(true);
@@ -102,7 +109,7 @@ public class LivingRoomActivity extends AppCompatActivity {
         minusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Nothing assigned' WHERE ID = 6";
+                String strSQL = "DELETE FROM LIVINGROOM WHERE ID = 6";
 
                 db.execSQL(strSQL);
 
@@ -175,9 +182,21 @@ public class LivingRoomActivity extends AppCompatActivity {
                     public void onClick(View v) {
 
                         Context context = v.getContext();
+                        Bundle arguments = new Bundle();
+                        arguments.putString("Origin", "tv");
+                        if(istablet){
 
-                        Intent intent = new Intent(context, lr_tv_activity.class);
-                        context.startActivity(intent);
+                            lr_tv_activity fragment = new lr_tv_activity();
+                            fragment.setArguments(arguments);
+                            getFragmentManager().beginTransaction()
+                                    .replace(R.id.fragmentholder, fragment)
+                                    .commit();
+                        }else{
+
+                            Intent intent = new Intent(context, lr_tv_activity.class);
+                            intent.putExtras(arguments);
+                            context.startActivity(intent);
+                        }
                     }
                 });
             }
@@ -187,9 +206,46 @@ public class LivingRoomActivity extends AppCompatActivity {
                     public void onClick(View v) {
 
                         Context context = v.getContext();
+                        Bundle arguments = new Bundle();
+                        arguments.putString("Origin", "Lamp1");
+                        if(istablet){
 
-                        Intent intent = new Intent(context, MainActivity.class);
-                        context.startActivity(intent);
+                            lr_lamp1_activity fragment = new lr_lamp1_activity();
+                            fragment.setArguments(arguments);
+                            getFragmentManager().beginTransaction()
+                                    .replace(R.id.fragmentholder, fragment)
+                                    .commit();
+                        }else{
+
+                            Intent intent = new Intent(context, lr_lamp1_activity.class);
+                            intent.putExtras(arguments);
+                            context.startActivity(intent);
+                        }
+                    }
+                });
+            }
+
+            if(message.getText().toString().equalsIgnoreCase("Smart lamp dimmer")) {
+                result.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Context context = v.getContext();
+                        Bundle arguments = new Bundle();
+                        arguments.putString("Origin", "Lamp2");
+                        if(istablet){
+
+                            lr_lamp2_activity fragment = new lr_lamp2_activity();
+                            fragment.setArguments(arguments);
+                            getFragmentManager().beginTransaction()
+                                    .replace(R.id.fragmentholder, fragment)
+                                    .commit();
+                        }else{
+
+                            Intent intent = new Intent(context, lr_lamp2_activity.class);
+                            intent.putExtras(arguments);
+                            context.startActivity(intent);
+                        }
                     }
                 });
             }
@@ -269,7 +325,7 @@ public class LivingRoomActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Smart tv' WHERE ID = 6";
+                String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart tv', 0);" ;
 
                 db.execSQL(strSQL);
                 messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
@@ -302,7 +358,41 @@ public class LivingRoomActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Smart lamp' WHERE ID = 6";
+                //String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Smart lamp' WHERE ID = 6";
+                String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart lamp', 0);" ;
+
+                db.execSQL(strSQL);
+
+                plusBtn.setClickable(false);
+                plusBtn.setAlpha(.5f);
+                minusBtn.setClickable(true);
+                minusBtn.setAlpha(1f);
+                b.dismiss();
+                array.clear();
+                results1 = db.rawQuery("Select * from LIVINGROOM", null);
+                results1.moveToFirst();
+
+
+                while (!results1.isAfterLast()) {
+                    array.add(results1.getString( results1.getColumnIndex( "MESSAGE") ));
+                    Log.i(ACTIVITY_NAME, "SQL MESSAGE:”" + results1.getString( results1.getColumnIndex( "MESSAGE") ) );
+                    Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + results1.getColumnCount() );
+
+                    for(int i =0; i < results1.getColumnCount(); i++){
+                        results1.getColumnName(i);
+                    }
+
+                    results1.moveToNext(); //move the cursor to the next row
+                }
+                messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //String strSQL = "UPDATE LIVINGROOM SET MESSAGE = 'Smart lamp' WHERE ID = 6";
+                String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart lamp dimmer', 0);" ;
 
                 db.execSQL(strSQL);
 

@@ -9,7 +9,7 @@ public class lr_databaseHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_NAME = "LIVINGROOM";
     private static final String DATABASE_NAME = "LIVINGROOM.db";
-    private static final int VERSION_NUM = 4;
+    private static final int VERSION_NUM = 7;
 
 
 
@@ -20,13 +20,13 @@ public class lr_databaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
         database.execSQL("CREATE TABLE " + TABLE_NAME +
-                " (ID INTEGER PRIMARY KEY AUTOINCREMENT, MESSAGE TEXT, USED INTEGER);"  );
-        database.execSQL("INSERT INTO " + TABLE_NAME + " (MESSAGE, USED) VALUES ('Smart tv', 0);"  );
-        database.execSQL("INSERT INTO " + TABLE_NAME + " (MESSAGE, USED) VALUES ('Smart lamp', 0);"  );
-        database.execSQL("INSERT INTO " + TABLE_NAME + " (MESSAGE, USED) VALUES ('Smart lamp dimmer', 0);"  );
-        database.execSQL("INSERT INTO " + TABLE_NAME + " (MESSAGE, USED) VALUES ('Smart lamp color dimmer', 0);"  );
-        database.execSQL("INSERT INTO " + TABLE_NAME + " (MESSAGE, USED) VALUES ('Smart window', 0);"  );
-        database.execSQL("INSERT INTO " + TABLE_NAME + " (MESSAGE, USED) VALUES ('Nothing assigned', 0);"  );
+                " (ID INTEGER PRIMARY KEY, MESSAGE TEXT, USED INTEGER);"  );
+        database.execSQL("INSERT INTO " + TABLE_NAME + " (ID, MESSAGE, USED) VALUES (1, 'Smart tv', 0);"  );
+        database.execSQL("INSERT INTO " + TABLE_NAME + " (ID, MESSAGE, USED) VALUES (2, 'Smart lamp', 0);"  );
+        database.execSQL("INSERT INTO " + TABLE_NAME + " (ID, MESSAGE, USED) VALUES (3, 'Smart lamp dimmer', 0);"  );
+        database.execSQL("INSERT INTO " + TABLE_NAME + " (ID, MESSAGE, USED) VALUES (4,'Smart lamp color dimmer', 0);"  );
+        database.execSQL("INSERT INTO " + TABLE_NAME + " (ID, MESSAGE, USED) VALUES (5,'Smart window', 0);"  );
+
         Log.i("ChatDatabaseHelper", "Calling onCreate");
 
     }
