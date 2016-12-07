@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.roe.smarthouseapp.Fridge"
+    tools:showIn="@layout/activity_fridge"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Fridge Settings"
+        android:id="@+id/title"
+        android:textColor="@color/text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="FridgeTemp"
+        android:id="@+id/fridgeTemp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="40sp"
+        android:textColor="@color/text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="FreezerTemp"
+        android:id="@+id/freezerTemp"
+        android:layout_toRightOf="@+id/fridgeTemp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="60dp"
+        android:textSize="40sp"
+        android:textColor="@color/text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fridge \nTemperature:"
+        android:id="@+id/fridge"
+        android:layout_below="@+id/fridgeTemp"
+        android:layout_marginTop="50dp"
+        android:layout_alignStart="@+id/fridgeTemp"
+        android:textColor="@color/text"/>
+
+    <Spinner
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/fridgeSettings"
+        android:layout_below="@+id/freezer"
+        android:layout_alignStart="@+id/fridgeTemp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Freezer \nTemperature:"
+        android:id="@+id/freezer"
+        android:layout_below="@+id/fridgeTemp"
+        android:layout_toRightOf="@+id/fridgeSettings"
+        android:layout_marginTop="50dp"
+        android:layout_alignStart="@+id/freezerTemp"
+        android:textColor="@color/text"/>
+
+    <Spinner
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/freezerSettings"
+        android:layout_below="@+id/freezer"
+        android:layout_toRightOf="@+id/fridgeSettings"
+        android:layout_alignStart="@+id/freezerTemp"/>
+
+</RelativeLayout>

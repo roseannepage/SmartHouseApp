@@ -27,5 +27,7 @@
     <string name="channel_down_button">channel down button</string>
     <string name="volume_down_button">volume down button</string>
     <string name="volume_up_button">volume up button</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
 
 </resources>

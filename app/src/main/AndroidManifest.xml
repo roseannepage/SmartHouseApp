@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.roe.smarthouseapp">
 
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +22,19 @@
         <activity android:name=".KitchenActivity" />
         <activity android:name=".HouseActivity" />
         <activity android:name=".AutomobileActivity" />
+
+        <activity android:name=".Microwave"
+            android:theme="@style/AppTheme2"/>
+
+        <activity
+            android:name=".Fridge"
+            android:label="Fridge"
+            android:theme="@style/AppTheme2" />
+
+        <activity
+            android:name=".MainLight"
+            android:label="MainLight"
+            android:theme="@style/AppTheme2"/>
     </application>
 
 </manifest>

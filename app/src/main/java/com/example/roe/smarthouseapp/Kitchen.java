@@ -2,19 +2,16 @@ package com.example.roe.smarthouseapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class KitchenActivity extends AppCompatActivity {
-
-    protected static final String ACTIVITY_NAME = "KitchenActivity";
+public class Kitchen extends AppCompatActivity {
 
     //ArrayList<String> chatMessages = new ArrayList<>();
     ListView listView;
@@ -31,7 +28,7 @@ public class KitchenActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(KitchenActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Kitchen.this);
                 builder.setTitle("INFORMATION");
                 builder.setMessage("The Kitchen Smart Environment remote can wirelessly control appliances in your kitchen:\n\n Main Light: turn the light on or off, and dim the light to desired brightness.\n\n Microwave: Enter desired cook time, reset clock, and start or stop your microwave.\n\n Fridge: Set the temperature of both the fridge and the freezer.\n\n Add Device: Enter any new devices that are compatible with this application.");
 
@@ -71,15 +68,15 @@ public class KitchenActivity extends AppCompatActivity {
 
                 switch(position){
                     case 0:
-                        Intent intent = new Intent(KitchenActivity.this, MainLight.class);
+                        Intent intent = new Intent(Kitchen.this, MainLight.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        Intent intent2 = new Intent(KitchenActivity.this, Microwave.class);
+                        Intent intent2 = new Intent(Kitchen.this, Microwave.class);
                         startActivity(intent2);
                         break;
                     case 2:
-                        Intent intent3 = new Intent(KitchenActivity.this, Fridge.class);
+                        Intent intent3 = new Intent(Kitchen.this, Fridge.class);
                         startActivity(intent3);
                         break;
                 }//end switch
@@ -89,35 +86,8 @@ public class KitchenActivity extends AppCompatActivity {
 
     }//end onCreate function
 
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(ACTIVITY_NAME, "In onResume()");
-    }
-
-    @Override
-    protected void onStart() {
+    protected void onStart(){
         super.onStart();
-        Log.i(ACTIVITY_NAME, "In onStart()");
-    }
+    }//end onStart function
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(ACTIVITY_NAME, "In onPause()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(ACTIVITY_NAME, "In onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(ACTIVITY_NAME, "In onDestroy()");
-    }
-}
+}//end Kitchen class
