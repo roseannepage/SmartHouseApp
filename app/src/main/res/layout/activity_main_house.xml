@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.example.roe.smarthouseapp.HouseActivity"
+    android:weightSum="1"
+    style="@android:style/Widget.DeviceDefault.ExpandableListView"
+    android:background="@drawable/bcg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp">
+        <EditText
+            android:id="@+id/txtInput"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="New item"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_plus"
+            android:id="@+id/houseAddButton"
+            android:contentDescription="@string/contDescHouse2"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/txtInput"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/houseDeleteButton"
+            app:srcCompat="@drawable/ic_minus"
+            android:contentDescription="@string/contDescHouse3"
+            android:layout_alignParentTop="false"
+            android:layout_toEndOf="@+id/houseAddButton"
+            android:layout_alignParentBottom="true"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/info_icon"
+            android:id="@+id/houseInfoButton"
+            android:contentDescription="@string/contDescHouse4"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/houseDeleteButton"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemTView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:textAlignment="gravity"
+            android:textStyle="normal|bold"
+            android:typeface="sans"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="center" />
+
+
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/houseListView"
+        android:layout_width="match_parent"
+        android:layout_height="496dp"
+
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        >
+    </ListView>
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+

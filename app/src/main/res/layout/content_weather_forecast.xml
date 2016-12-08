@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_weather_forecast"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.roe.smarthouseapp.WeatherForecast"
+    tools:showIn="@layout/activity_weather_forecast"
+    android:background="?android:attr/colorPrimaryDark"
+    >
+
+    <ImageView
+        android:id="@+id/weatherImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
+        android:minWidth="200dp"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/textViewMaxTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/md_white_1000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Max Temperature"
+        android:layout_below="@+id/textViewMinTemp"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textViewMinTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/md_white_1000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Min Temperature"
+        android:layout_below="@+id/textViewCurTemp"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textViewCurTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/md_white_1000"
+        android:textSize="60sp"
+        android:textAlignment="center"
+
+        android:text="Current Temperature"
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/weatherImageView"
+        android:layout_alignParentStart="true" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="visible"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:indeterminate="true"
+        android:layout_below="@+id/textViewMaxTemp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp" />
+
+</RelativeLayout>

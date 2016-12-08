@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Application Projet De Groupe</string>
+    <string name="contDesc1">bouton pour aller à l\'activité de la salon</string>
+    <string name="contDesc2">Bouton pour aller à l\'activité de cuisine</string>
+    <string name="contDesc3">Bouton pour aller à l\'activité de la maison</string>
+    <string name="contDesc4">bouton pour aller à l\'activité de l\'automobile</string>
+    <string name="contDesc5">bouton pour aller à l\'information</string>
+    <string name="welcomeText">Bienvenue à l\'application de la maison intelligente! Veuillez cliquer sur une icône.</string>
+
+    <string name="contDescLR2">bouton pour ajouter un objet dans la liste</string>
+    <string name="contDescLR3">bouton pour enlever un objet dans la liste</string>
+    <string name="contDescLR4">bouton pour l\'information</string>
+    <string name="TVRemoteTitle">Télévision</string>
+    <string name="TVRemoteONOFF">Allumer ou éteindre la télévision</string>
+    <string name="TVRemoteToggleON">ALLUMER</string>
+    <string name="TVRemoteToggleOFF">ÉTEINDRE</string>
+    <string name="TVRemoteChannelSelect">Poste de la télévision</string>
+    <string name="TVRemoteChannelS">00</string>
+    <string name="channel_down">Descendre le poste</string>
+    <string name="channel_up">Monter le poste</string>
+    <string name="enter">Retour</string>
+    <string name="volume_down">Volume -</string>
+    <string name="volume_up">Volume +</string>
+    <string name="channel_up_button">bouton monter pour le poste</string>
+    <string name="channel_enter_button">bouton retour pour le poste</string>
+    <string name="channel_down_button">bouton pour descendre le poste</string>
+    <string name="volume_down_button">bouton pour descendre le volume</string>
+    <string name="volume_up_button">bouton pour monter le volume</string>
+
+    <string name="pick_a_new_item_to_add">Choisissez un nouvel objet à ajouter.</string>
+    <string name="lamp">Lampe</string>
+    <string name="turn_lamp_on_off">Allumer ou éteindre la lampe</string>
+    <string name="full_brightness">Pleine luminosité</string>
+    <string name="lamp_dimmer_controls">Contrôles gradateur de lampe</string>
+    <string name="off">Éteindre</string>
+    <string name="lamp_dimmer">Gradateur de lampe</string>
+        <string name="tvinfo">Cliquez sur le bouton Toggle allumer/éteindre la télévision.
+         En cliquant sur le numéro de la poste de télé, vous laisse la modifier.
+         Vous devez ensuite appuyer sur le bouton Retour pour changer le poste sur la télévision.
+         En cliquant sur les boutons Channel haut et bas, vous pouvez vous déplacer dans les postes un à la fois.</string>
+    <string name="livingroominfo">Salon Activité créée par Roseanne Page.
+         En cliquant sur l\'icône +, vous pouvez ajouter un élément à la liste.
+         En cliquant sur l\'icône - vous pouvez supprimer un élément de la liste.
+         Cliquant sur un élément répertorié vous apporte a une vue plus détaillée et des options pour l\'élément.</string>
+    <string name="colour_controls">Controle de couleur</string>
+    <string name="lamp_dimmer_with_colour">Gradateur de lampe avec couleur</string>
+    <string name="pick_a_color">Choisir une couleur</string>
+    <string name="colour">La couleur est maintement</string>
+    <string-array name="colour_arrays">
+        <item>Blanc</item>
+        <item>Rouge</item>
+        <item>Orange</item>
+        <item>Jaune</item>
+        <item>Vert</item>
+        <item>Bleu</item>
+        <item>Violet</item>
+    </string-array>
+    <string name="currentTempText">Température actuelle</string>
+    <string name="opened">Ouverte</string>
+    <string name="closed">Fermé</string>
+    <string name="smart_window">Fenêtre intélligente</string>
+    <string name="window_blinds_controls">Contrôle des stores</string>
+    <string name="weather_img">Météo img</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Canceller</string>
+    <string name="living_room">Salon</string>
+    <string name="maininfo">Aplication application de la maison intelligente créé par Roseanne Page, James Lowell, Narges Karimitbar et Scott Cote.</string>
+
+
+    <!--   -->
+    <string name="title_houseitmlist_list">Objets</string>
+    <string name="title_houseitmlist_detail">house_itmlist Detail</string>
+    <string name="title_houseitemlist_list">Objets</string>
+    <string name="title_houseitemlist_detail">house_itemlist Detail</string>
+    <string name="hello">I am the Garage Door opener.</string>
+    <string name="contDescHouse1">button to the welcome page</string>
+    <string name="contDescHouse2">button to add item to list</string>
+    <string name="contDescHouse3">button to remove item from list</string>
+    <string name="contDescHouse4">button for information</string>
+    <string name="settings_url_title">Garage URL</string>
+    <string name="settings_url_summary">The garage opener\'s webserver endpoint</string>
+
+    <string name="settings_secret_title">Shared Secret</string>
+    <string name="settings_secret_summary">The password to open the garage</string>
+
+    <string name="settings_ssid_title">House SSID</string>
+    <string name="settings_ssid_summary">Your home\'s SSID to scan for</string>
+
+    <string name="text_button_open">Open</string>
+    <string name="text_button_stop">Stop</string>
+    <string name="text_button_close">Close</string>
+    <string name="garageDoorClosed">Garage Door Closed</string>
+    <string name="garageDoorOpened">Garage Door Opened</string>
+    <string name="garageLight">Garage Light</string>
+
+    <string name="title_activity_weather_forecast">Outside Weather</string>
+    <string name="title_activity_garage">ActivityGarage</string>
+    <string name="title_activity_house_temperature">HouseTemperatureActivity</string>
+    <string name="title_activity_time_picker">ActivityTimePicker</string>
+
+    <string name="pick_time">Set Time</string>
+    <string name="pick_date">Set Date</string>
+    <string name="title_activity_temp_view_set">activity_temp_view_set</string>
+    <string name="pick_temp">Save settings</string>
+    <string name="view_settings">View Settings</string>
+</resources>

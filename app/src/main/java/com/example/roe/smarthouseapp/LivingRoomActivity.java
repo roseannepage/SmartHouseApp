@@ -24,8 +24,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
-
 import static com.example.roe.smarthouseapp.R.id.message_text;
 
 
@@ -419,11 +417,7 @@ public class LivingRoomActivity extends AppCompatActivity {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
 
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-            alertBuilder.setMessage("Living Room Activity created by Roseanne Page. \n\n\n" +
-
-                    "Clicking on the + icon allows you to add an item to the list.\n\n" +
-                    "Clicking on the - icon allows you to remove an item from the list.\n\n" +
-                    "Clicking on a listed item brings you to a more detailled view and options for said item.")
+            alertBuilder.setMessage(R.string.livingroominfo)
 
                     .setNeutralButton("close dialog", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -551,7 +545,7 @@ public class LivingRoomActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
             }
@@ -590,7 +584,7 @@ public class LivingRoomActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
             }

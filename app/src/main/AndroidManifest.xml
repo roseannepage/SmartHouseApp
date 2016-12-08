@@ -21,10 +21,28 @@
         <activity android:name=".KitchenActivity" />
         <activity android:name=".HouseActivity" />
         <activity android:name=".AutomobileActivity" />
-
+        <activity android:name=".Fridge" />
+        <activity android:name=".Kitchen" />
+        <activity android:name=".MainLight" />
+        <activity android:name=".Microwave" />
         <activity android:name=".lr_fragmentholder" />
-        <activity android:name=".lr_lamp3_activity" />
-        <activity android:name=".lr_blinds_activity"></activity>
+
+
+        <activity
+            android:name=".WeatherForecast"
+            android:label="@string/title_activity_weather_forecast"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SingleListItem"
+            android:label="Single Item Selected" />
+        <activity
+            android:name=".ActivityGarage"
+            android:label="@string/title_activity_garage"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".HouseTempActivity" />
+        <activity android:name=".ActivityTempPicker" /><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+
     </application>
 
 </manifest>

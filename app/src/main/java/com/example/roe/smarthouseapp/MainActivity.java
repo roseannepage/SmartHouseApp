@@ -118,9 +118,9 @@ public class MainActivity extends AppCompatActivity {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
 
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-            alertBuilder.setMessage("Smart house app created by Roseanne Page, James Lowell, Narges Karimitbar & Scott Cote.")
+            alertBuilder.setMessage(R.string.maininfo)
 
-                    .setNeutralButton("close dialog", new DialogInterface.OnClickListener() {
+                    .setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dismiss();
                         }

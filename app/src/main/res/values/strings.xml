@@ -39,6 +39,10 @@
         Clicking on the TV channel number allows you to change it.
         You must then press the enter button change the channel on the TV.
         Clicking on the Channel up and down buttons allow you to move through the channels one channel at a time.</string>
+    <string name="livingroominfo">Living Room Activity created by Roseanne Page.
+        Clicking on the + icon allows you to add an item to the list.
+        Clicking on the - icon allows you to remove an item from the list.
+        Clicking on a listed item brings you to a more detailed view and options for said item.</string>
     <string name="colour_controls">Colour controls</string>
     <string name="lamp_dimmer_with_colour">Lamp dimmer with colour</string>
     <string name="pick_a_color">Pick a colour</string>
@@ -58,4 +62,46 @@
     <string name="smart_window">Smart window</string>
     <string name="window_blinds_controls">Window blinds controls</string>
     <string name="weather_img">Weather img</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="living_room">Living Room</string>
+    <string name="maininfo">Smart house app created by Roseanne Page, James Lowell, Narges Karimitbar and Scott Cote.</string>
+
+
+    <!--   -->
+    <string name="title_houseitmlist_list">Items</string>
+    <string name="title_houseitmlist_detail">house_itmlist Detail</string>
+    <string name="title_houseitemlist_list">Items</string>
+    <string name="title_houseitemlist_detail">house_itemlist Detail</string>
+    <string name="hello">I am the Garage Door opener.</string>
+    <string name="contDescHouse1">button to the welcome page</string>
+    <string name="contDescHouse2">button to add item to list</string>
+    <string name="contDescHouse3">button to remove item from list</string>
+    <string name="contDescHouse4">button for information</string>
+    <string name="settings_url_title">Garage URL</string>
+    <string name="settings_url_summary">The garage opener\'s webserver endpoint</string>
+
+    <string name="settings_secret_title">Shared Secret</string>
+    <string name="settings_secret_summary">The password to open the garage</string>
+
+    <string name="settings_ssid_title">House SSID</string>
+    <string name="settings_ssid_summary">Your home\'s SSID to scan for</string>
+
+    <string name="text_button_open">Open</string>
+    <string name="text_button_stop">Stop</string>
+    <string name="text_button_close">Close</string>
+    <string name="garageDoorClosed">Garage Door Closed</string>
+    <string name="garageDoorOpened">Garage Door Opened</string>
+    <string name="garageLight">Garage Light</string>
+
+    <string name="title_activity_weather_forecast">Outside Weather</string>
+    <string name="title_activity_garage">ActivityGarage</string>
+    <string name="title_activity_house_temperature">HouseTemperatureActivity</string>
+    <string name="title_activity_time_picker">ActivityTimePicker</string>
+
+    <string name="pick_time">Set Time</string>
+    <string name="pick_date">Set Date</string>
+    <string name="title_activity_temp_view_set">activity_temp_view_set</string>
+    <string name="pick_temp">Save settings</string>
+    <string name="view_settings">View Settings</string>
 </resources>

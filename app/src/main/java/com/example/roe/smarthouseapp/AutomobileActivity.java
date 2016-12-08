@@ -15,7 +15,7 @@ public class AutomobileActivity extends AppCompatActivity {
 
     protected static final String ACTIVITY_NAME = "AutomobileActivity";
     AutomobileActivity.AutomobileInfoDialogFragment infoDialog;
-    ImageButton compasBtn, infoBtn;
+    ImageButton infoBtn;
     ListView lrList;
 
     @Override
@@ -23,7 +23,6 @@ public class AutomobileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_automobile);
 
-        compasBtn = (ImageButton) findViewById(R.id.lrCompasBtn);
         infoBtn = (ImageButton) findViewById(R.id.lrInfoBtn);
         infoDialog = new AutomobileActivity.AutomobileInfoDialogFragment();
         lrList = (ListView)findViewById(R.id.listviewlr) ;
@@ -38,12 +37,7 @@ public class AutomobileActivity extends AppCompatActivity {
             }
         });
 
-        compasBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
     }
 
     @Override

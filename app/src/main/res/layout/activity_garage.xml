@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="1dp">
+
+        <Button
+            android:id="@+id/openDoor"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:padding="1dp"
+            android:text="@string/text_button_open"></Button>
+
+        <Button
+            android:id="@+id/stopDoor"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:padding="1dp"
+            android:text="@string/text_button_stop"></Button>
+
+        <Button
+            android:id="@+id/closeDoor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:text="@string/text_button_close"></Button>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- <Button
+             android:id="@+id/doorButtonCLosed"
+             android:layout_width="400dp"
+             android:layout_height="350dp"
+             android:layout_gravity="center_horizontal"
+             android:adjustViewBounds="true"
+             android:text="@string/garageDoorClosed"
+             android:gravity="center"
+             android:textAlignment="center"/>
+         <Button
+             android:id="@+id/doorButtonOpened"
+             android:layout_width="400dp"
+             android:layout_height="60dp"
+             android:layout_gravity="center_horizontal"
+             android:adjustViewBounds="true"
+             android:text="@string/garageDoorOpened"
+             android:gravity="center"
+             android:textAlignment="center"/>  -->
+        <ImageButton
+            android:id="@+id/doorButtonCLosed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:background="@drawable/doorclosed"/>
+
+
+        <ImageButton
+            android:id="@+id/doorButtonOpened"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+
+            android:background="@drawable/dooropened"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+
+    </RelativeLayout>
+
+
+    <include layout="@layout/garage_lamp"
+        />
+</LinearLayout>
+
+
+

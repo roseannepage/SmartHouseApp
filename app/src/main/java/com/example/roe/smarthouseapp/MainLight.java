@@ -57,7 +57,7 @@ public class MainLight extends AppCompatActivity {
         int screen_brightness = (int) curBrightnessValue;
         seekbar.setProgress(screen_brightness);
 
-        if(Settings.System.canWrite(this) != false) {
+        /*if(Settings.System.canWrite(this) != false) {
 
             seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 int progress = 0;
@@ -81,7 +81,7 @@ public class MainLight extends AppCompatActivity {
                             progress);
                 }
             });
-        }
+        }*/
 
     }//end onCreate function
 
