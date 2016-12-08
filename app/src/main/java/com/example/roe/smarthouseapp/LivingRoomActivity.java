@@ -123,7 +123,10 @@ public class LivingRoomActivity extends AppCompatActivity {
         minusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String strSQL = "DELETE FROM LIVINGROOM WHERE ID = 6";
+
+
 
                 db.execSQL(strSQL);
 
@@ -195,14 +198,16 @@ public class LivingRoomActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
+
                         if(message.getText().toString().contains("2")){
                             list6 ++;
+
                         }else{
                             list1 ++;
-                        }
 
-                        Context context = v.getContext();
+                        }
                         Bundle arguments = new Bundle();
+                        Context context = v.getContext();
                         arguments.putString("Origin", "tv");
                         if(istablet){
 
@@ -220,7 +225,7 @@ public class LivingRoomActivity extends AppCompatActivity {
                     }
                 });
             }
-            if(message.getText().toString().contains("Smart lamp")) {
+            if(message.getText().toString().equalsIgnoreCase("Smart lamp")|| message.getText().toString().equalsIgnoreCase("Smart lamp 2")) {
 
                 result.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -234,7 +239,7 @@ public class LivingRoomActivity extends AppCompatActivity {
 
                         Context context = v.getContext();
                         Bundle arguments = new Bundle();
-                        arguments.putString("Origin", "Lamp1");
+                        arguments.putString("Origin", "lamp1");
                         if(istablet){
 
                             lr_lamp1_activity fragment = new lr_lamp1_activity();
@@ -263,9 +268,9 @@ public class LivingRoomActivity extends AppCompatActivity {
                             list3 ++;
                         }
 
-                        Context context = v.getContext();
                         Bundle arguments = new Bundle();
-                        arguments.putString("Origin", "Lamp2");
+                        Context context = v.getContext();
+                        arguments.putString("Origin", "lamp2");
                         if(istablet){
 
                             lr_lamp2_activity fragment = new lr_lamp2_activity();
@@ -296,7 +301,7 @@ public class LivingRoomActivity extends AppCompatActivity {
 
                         Context context = v.getContext();
                         Bundle arguments = new Bundle();
-                        arguments.putString("Origin", "Lamp3");
+                        arguments.putString("Origin", "lamp3");
                         if(istablet){
 
                             lr_lamp3_activity fragment = new lr_lamp3_activity();
@@ -354,7 +359,14 @@ public class LivingRoomActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
+
         super.onResume();
+        if(findViewById(R.id.frameid) != null){
+            istablet = true;
+        }else{
+            istablet = false;
+        }
         Log.i(ACTIVITY_NAME, "In onResume()");
     }
 
@@ -443,6 +455,7 @@ public class LivingRoomActivity extends AppCompatActivity {
                 String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart tv 2', 0);" ;
 
                 db.execSQL(strSQL);
+
                 messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
                 plusBtn.setClickable(false);
                 plusBtn.setAlpha(.5f);
@@ -478,6 +491,7 @@ public class LivingRoomActivity extends AppCompatActivity {
 
                 db.execSQL(strSQL);
 
+
                 plusBtn.setClickable(false);
                 plusBtn.setAlpha(.5f);
                 minusBtn.setClickable(true);
@@ -510,6 +524,7 @@ public class LivingRoomActivity extends AppCompatActivity {
                 String strSQL = "INSERT INTO LIVINGROOM (ID, MESSAGE, USED) VALUES (6, 'Smart lamp dimmer 2', 0);" ;
 
                 db.execSQL(strSQL);
+
 
                 plusBtn.setClickable(false);
                 plusBtn.setAlpha(.5f);

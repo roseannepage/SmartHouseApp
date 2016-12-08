@@ -1,6 +1,8 @@
 package com.example.roe.smarthouseapp;
 
 import android.app.Fragment;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,8 +49,14 @@ public class lr_lamp3_activity extends Fragment {
 
         View rootView = inflater.inflate(R.layout.activity_lr_lamp3_activity, container, false);
 
-    slider = (SeekBar) rootView.findViewById(R.id.seekBar);
+
+
+
+
+        slider = (SeekBar) rootView.findViewById(R.id.seekBar);
         dropDwn = (Spinner) rootView.findViewById(R.id.dropDown);
+
+
 
         dropDwn.setOnItemSelectedListener(new DropDownListener() {
 
@@ -101,4 +109,6 @@ public class lr_lamp3_activity extends Fragment {
 
 
     }
+
+
 }

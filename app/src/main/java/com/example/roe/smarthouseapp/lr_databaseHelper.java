@@ -9,7 +9,7 @@ public class lr_databaseHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_NAME = "LIVINGROOM";
     private static final String DATABASE_NAME = "LIVINGROOM.db";
-    private static final int VERSION_NUM = 7;
+    private static final int VERSION_NUM = 9;
 
 
 

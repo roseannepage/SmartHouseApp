@@ -25,10 +25,11 @@ public class lr_fragmentholder extends AppCompatActivity {
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
+
             String origin = getIntent().getStringExtra("Origin");
 
             Bundle arguments = new Bundle();
-            if(origin.equalsIgnoreCase("lamp2")){
+            if(origin.contains("lamp2")){
                 arguments.putString(lr_lamp2_activity.ARG_ITEM_ID,
                         getIntent().getStringExtra(lr_lamp2_activity.ARG_ITEM_ID));
                 Fragment fragment = new lr_lamp2_activity();
@@ -37,25 +38,25 @@ public class lr_fragmentholder extends AppCompatActivity {
                         .add(R.id.fragmentholder, fragment)
                         .commit();
             }
-            if(origin.equalsIgnoreCase("lamp1")){
-                arguments.putString(lr_lamp2_activity.ARG_ITEM_ID,
-                        getIntent().getStringExtra(lr_lamp2_activity.ARG_ITEM_ID));
-                Fragment fragment = new lr_lamp2_activity();
+            if(origin.contains("lamp1")){
+                arguments.putString(lr_lamp1_activity.ARG_ITEM_ID,
+                        getIntent().getStringExtra(lr_lamp1_activity.ARG_ITEM_ID));
+                Fragment fragment = new lr_lamp1_activity();
                 fragment.setArguments(arguments);//check origin
                 getFragmentManager().beginTransaction()
                         .add(R.id.fragmentholder, fragment)
                         .commit();
             }
-            if(origin.equalsIgnoreCase("tv")){
-                arguments.putString(lr_lamp2_activity.ARG_ITEM_ID,
-                        getIntent().getStringExtra(lr_lamp2_activity.ARG_ITEM_ID));
+            if(origin.contains("tv")){
+                arguments.putString(lr_tv_activity.ARG_ITEM_ID,
+                        getIntent().getStringExtra(lr_tv_activity.ARG_ITEM_ID));
                 Fragment fragment = new lr_tv_activity();
                 fragment.setArguments(arguments);//check origin
                 getFragmentManager().beginTransaction()
                         .add(R.id.fragmentholder, fragment)
                         .commit();
             }
-            if(origin.equalsIgnoreCase("lamp3")){
+            if(origin.contains("lamp3")){
                 arguments.putString(lr_lamp3_activity.ARG_ITEM_ID,
                         getIntent().getStringExtra(lr_lamp3_activity.ARG_ITEM_ID));
                 Fragment fragment = new lr_lamp3_activity();
