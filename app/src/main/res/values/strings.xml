@@ -28,4 +28,13 @@
     <string name="volume_down_button">volume down button</string>
     <string name="volume_up_button">volume up button</string>
 
+    <!-- automobile strings -->
+    <string name="preset1">Preset 1</string>
+    <string name="preset2">Preset 2</string>
+    <string name="preset3">Preset 3</string>
+    <string name="preset4">Preset 4</string>
+    <string name="preset5">Preset 5</string>
+    <string name="preset6">Preset 6</string>
+
+
 </resources>
