@@ -3,11 +3,15 @@ package com.example.roe.smarthouseapp;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -15,8 +19,8 @@ public class AutomobileActivity extends AppCompatActivity {
 
     protected static final String ACTIVITY_NAME = "AutomobileActivity";
     AutomobileActivity.AutomobileInfoDialogFragment infoDialog;
-    ImageButton infoBtn;
-    ListView lrList;
+    ImageButton  infoBtn;
+    ListView autolrList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +29,53 @@ public class AutomobileActivity extends AppCompatActivity {
 
         infoBtn = (ImageButton) findViewById(R.id.lrInfoBtn);
         infoDialog = new AutomobileActivity.AutomobileInfoDialogFragment();
-        lrList = (ListView)findViewById(R.id.listviewlr) ;
 
 
+        autolrList = (ListView)findViewById(R.id.autolistviewlr) ; // get list view object
+
+        String[] values = new String[] {"Temperature", "Fuel Level", "Radio", "GPS", "Lights", "Odometer", "Drive"}; // define array values to show in ListView
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_auto_listview, values); // define adapter to make the list
+
+        autolrList.setAdapter(adapter); // set the adapter to make the list
+
+        autolrList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = (String) parent.getItemAtPosition(position);
+                Intent intent;
+                switch (item) {
+                    case "Temperature":
+                        intent = new Intent(AutomobileActivity.this, AutoTemperatureActivity.class);
+                        startActivity(intent);
+                        break;
+                    case "Fuel Level":
+                        intent = new Intent(AutomobileActivity.this, FuelLevelActivity.class);
+                        startActivity(intent);
+                        break;
+                    case "Radio":
+                        intent = new Intent(AutomobileActivity.this, RadioActivity.class);
+                        startActivity(intent);
+                        break;
+                    case "GPS":
+                        intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                Uri.parse("http://maps.google.com/maps"));
+                        startActivity(intent);
+                        break;
+                    case "Lights":
+                        intent = new Intent(AutomobileActivity.this, LightsActivity.class);
+                        startActivity(intent);
+                        break;
+                    case "Drive":
+                        intent = new Intent(AutomobileActivity.this, DriveActivity.class);
+                        startActivity(intent);
+                        break;
+                    case "Odometer":
+                        intent = new Intent(AutomobileActivity.this, OdometerActivity.class);
+                        startActivity(intent);
+                }
+            }
+        });
 
         infoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +84,6 @@ public class AutomobileActivity extends AppCompatActivity {
                 Log.i(ACTIVITY_NAME, "User clicked Info Icon");
             }
         });
-
 
     }
 
@@ -75,10 +122,13 @@ public class AutomobileActivity extends AppCompatActivity {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
 
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-            alertBuilder.setMessage("Roseanne: \"I made this\"\n" +
-                                    "Scott:    \"You made this\"\n" +
-                                    "Scott:     *looks around*\n" +
-                                    "Scott:    \"I made this\"")
+            alertBuilder.setMessage("Welcome to the Automobile page!\n" +
+                    "Clicking on any of the items in the list\n" +
+                    "brings you to their respective page.\n\n" +
+                    "" +
+                    "Use the back button to go back\n\n" +
+                    "" +
+                    "Scott C.")
 
                     .setNeutralButton("close dialog", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
