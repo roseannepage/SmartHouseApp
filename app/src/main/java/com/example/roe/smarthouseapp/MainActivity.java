@@ -14,6 +14,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
+/**
+ * Main activity for the app. Lets you navigte to the different sections.
+ * @author Roseanne Page
+ */
 public class MainActivity extends AppCompatActivity {
 
     protected static final String ACTIVITY_NAME = "MainActivity";
@@ -113,6 +117,10 @@ public class MainActivity extends AppCompatActivity {
         Log.i(ACTIVITY_NAME, "In onDestroy()");
     }
 
+    /**
+     * Dialog fragment for the information button
+     * @author Roseanne Page
+     */
     public static class WelcomeInfoDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {

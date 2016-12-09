@@ -29,6 +29,10 @@ import java.net.URL;
 
 import static android.R.attr.max;
 
+/**
+ * fragment for my smart window in the living room
+ * @author Roseanne Page
+ */
 public class lr_blinds_activity extends Fragment {
 
     ProgressBar progBar;
@@ -104,7 +108,9 @@ public class lr_blinds_activity extends Fragment {
         return rootView;
     }
 
-
+    /**
+     * asynctask for showing the current weather in ottawa.
+     */
     public class ForecastQuery  extends AsyncTask<String, Integer, String>{
 
         String current, min, max;

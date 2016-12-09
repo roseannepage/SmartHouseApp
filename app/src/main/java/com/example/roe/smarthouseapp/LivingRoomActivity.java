@@ -26,7 +26,10 @@ import java.util.ArrayList;
 
 import static com.example.roe.smarthouseapp.R.id.message_text;
 
-
+/**
+ * living room activity. Populates a listview and allows you to add a signle new item or remove that item.
+ * @author Roseanne Page
+ */
 public class LivingRoomActivity extends AppCompatActivity {
 
     protected static final String ACTIVITY_NAME = "LivingRoomActivity";
@@ -59,7 +62,7 @@ public class LivingRoomActivity extends AppCompatActivity {
         }
 
 
-
+//populating the list
         messageAdapter = new ListAdapter( this );
         lrList.setAdapter (messageAdapter);
         lr_databaseHelper dbHelper = new lr_databaseHelper( this );
@@ -98,6 +101,7 @@ public class LivingRoomActivity extends AppCompatActivity {
             results1.moveToNext(); //move the cursor to the next row
         }
 
+        //disabling or enabling the + - buttons
         if(array.size()<=5){
             minusBtn.setClickable(false);
             minusBtn.setAlpha(.5f);
@@ -166,6 +170,9 @@ public class LivingRoomActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * list adapter. checks what message is stored for the item being added and adds the right clicklistener for it
+     */
     private class ListAdapter extends ArrayAdapter<String> {
 
 
@@ -386,6 +393,9 @@ public class LivingRoomActivity extends AppCompatActivity {
         Log.i(ACTIVITY_NAME, "In onStop()");
     }
 
+    /**
+     * on destroy updates the database with times the items where clicked on
+     */
     @Override
     protected void onDestroy() {
 
@@ -412,6 +422,10 @@ public class LivingRoomActivity extends AppCompatActivity {
         Log.i(ACTIVITY_NAME, "In onDestroy()");
     }
 
+    /**
+     * dialog fragment for info button
+     * @author Roseanne Page
+     */
     public static class LivingRoomInfoDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -429,6 +443,10 @@ public class LivingRoomActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * dialog for when you add a button
+     * @author Roseanne Page
+     */
     public void onCreateDialog() {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
 
